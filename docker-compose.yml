@@ -16,7 +16,7 @@ services:
     image: puneethreddy03/sdp-backend:latest
     container_name: springboot
     ports:
-      - "2025:1430"
+      - "1430:1430"
     depends_on:
       - mysqldb
     restart: on-failure
