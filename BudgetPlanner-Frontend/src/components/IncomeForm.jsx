@@ -32,18 +32,18 @@ const IncomeForm = () => {
   return (
     <div className="glass rounded-2xl p-8 shadow-2xl border border-white/20 animate-slideInLeft">
       <div className="flex items-center space-x-3 mb-8">
-        <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-green-600 rounded-xl flex items-center justify-center shadow-lg">
+        <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
           <span className="text-2xl">💵</span>
         </div>
         <div>
           <h3 className="text-2xl font-bold text-white">Add Income</h3>
-          <p className="text-emerald-200 text-sm">Track your earnings and revenue streams</p>
+          <p className="text-teal-200 text-sm">Track your earnings and revenue streams</p>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-2">
-          <label className="block text-sm font-semibold text-emerald-200">
+          <label className="block text-sm font-semibold text-teal-200">
             Income Source
           </label>
           <div className="relative">
@@ -52,12 +52,12 @@ const IncomeForm = () => {
               name="source"
               value={formData.source}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent text-white placeholder-emerald-200 transition-all duration-300"
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent text-white placeholder-teal-200 transition-all duration-300"
               placeholder="e.g., Salary, Freelance, Investment"
               required
             />
             <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
-              <svg className="h-5 w-5 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="h-5 w-5 text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
               </svg>
             </div>
@@ -65,12 +65,12 @@ const IncomeForm = () => {
         </div>
 
         <div className="space-y-2">
-          <label className="block text-sm font-semibold text-emerald-200">
+          <label className="block text-sm font-semibold text-teal-200">
             Amount
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center">
-              <span className="text-emerald-300 text-lg font-bold">$</span>
+              <span className="text-teal-300 text-lg font-bold">$</span>
             </div>
             <input
               type="number"
@@ -79,7 +79,7 @@ const IncomeForm = () => {
               onChange={handleChange}
               step="0.01"
               min="0"
-              className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent text-white placeholder-emerald-200 transition-all duration-300"
+              className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent text-white placeholder-teal-200 transition-all duration-300"
               placeholder="0.00"
               required
             />
@@ -87,7 +87,7 @@ const IncomeForm = () => {
         </div>
 
         <div className="space-y-2">
-          <label className="block text-sm font-semibold text-emerald-200">
+          <label className="block text-sm font-semibold text-teal-200">
             Frequency
           </label>
           <div className="relative">
@@ -95,7 +95,7 @@ const IncomeForm = () => {
               name="frequency"
               value={formData.frequency}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent text-white transition-all duration-300 appearance-none"
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent text-white transition-all duration-300 appearance-none"
             >
               <option value="monthly" className="bg-gray-800 text-white">Monthly</option>
               <option value="weekly" className="bg-gray-800 text-white">Weekly</option>
@@ -104,7 +104,7 @@ const IncomeForm = () => {
               <option value="one-time" className="bg-gray-800 text-white">One-time</option>
             </select>
             <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-              <svg className="h-5 w-5 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="h-5 w-5 text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </div>
@@ -113,7 +113,7 @@ const IncomeForm = () => {
 
         <button
           type="submit"
-          className="w-full bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold py-3 px-6 rounded-xl hover:from-emerald-600 hover:to-green-700 transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+          className="w-full bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-semibold py-3 px-6 rounded-xl hover:from-teal-600 hover:to-cyan-700 transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />

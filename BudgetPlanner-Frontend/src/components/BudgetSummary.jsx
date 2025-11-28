@@ -22,13 +22,13 @@ const BudgetSummary = () => {
     <div className="glass rounded-2xl p-8 shadow-2xl border border-white/20 animate-slideInUp">
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+          <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-xl flex items-center justify-center shadow-lg">
             <span className="text-2xl">📊</span>
           </div>
           <h3 className="text-2xl font-bold text-white">Budget Overview</h3>
         </div>
         <div className="text-right">
-          <p className="text-blue-200 text-sm">Current Status</p>
+          <p className="text-cyan-200 text-sm">Current Status</p>
           <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
             isOverBudget ? 'bg-red-500/20 text-red-300 border border-red-400/30' : 'bg-green-500/20 text-green-300 border border-green-400/30'
           }`}>
@@ -39,49 +39,49 @@ const BudgetSummary = () => {
       
       {/* Modern Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-gradient-to-br from-emerald-400/20 to-emerald-600/20 p-6 rounded-xl border border-emerald-400/30 backdrop-blur-sm">
+        <div className="bg-gradient-to-br from-teal-400/20 to-cyan-500/20 p-6 rounded-xl border border-teal-400/30 backdrop-blur-sm">
           <div className="flex items-center justify-between mb-4">
-            <div className="w-10 h-10 bg-emerald-500/30 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-teal-500/30 rounded-lg flex items-center justify-center">
               <span className="text-lg">💵</span>
             </div>
-            <div className="text-emerald-300 text-sm font-medium">+{((totalIncome / (totalIncome + totalExpenses)) * 100 || 0).toFixed(0)}%</div>
+            <div className="text-teal-300 text-sm font-medium">+{((totalIncome / (totalIncome + totalExpenses)) * 100 || 0).toFixed(0)}%</div>
           </div>
-          <h4 className="text-emerald-300 text-sm font-semibold mb-1">Total Income</h4>
+          <h4 className="text-teal-300 text-sm font-semibold mb-1">Total Income</h4>
           <p className="text-3xl font-bold text-white">${totalIncome.toLocaleString()}</p>
-          <p className="text-emerald-200 text-xs mt-1">This month</p>
+          <p className="text-teal-200 text-xs mt-1">This month</p>
         </div>
         
-        <div className="bg-gradient-to-br from-rose-400/20 to-rose-600/20 p-6 rounded-xl border border-rose-400/30 backdrop-blur-sm">
+        <div className="bg-gradient-to-br from-orange-400/20 to-amber-500/20 p-6 rounded-xl border border-orange-400/30 backdrop-blur-sm">
           <div className="flex items-center justify-between mb-4">
-            <div className="w-10 h-10 bg-rose-500/30 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-orange-500/30 rounded-lg flex items-center justify-center">
               <span className="text-lg">💸</span>
             </div>
-            <div className="text-rose-300 text-sm font-medium">-{((totalExpenses / (totalIncome + totalExpenses)) * 100 || 0).toFixed(0)}%</div>
+            <div className="text-orange-300 text-sm font-medium">-{((totalExpenses / (totalIncome + totalExpenses)) * 100 || 0).toFixed(0)}%</div>
           </div>
-          <h4 className="text-rose-300 text-sm font-semibold mb-1">Total Expenses</h4>
+          <h4 className="text-orange-300 text-sm font-semibold mb-1">Total Expenses</h4>
           <p className="text-3xl font-bold text-white">${totalExpenses.toLocaleString()}</p>
-          <p className="text-rose-200 text-xs mt-1">This month</p>
+          <p className="text-orange-200 text-xs mt-1">This month</p>
         </div>
         
         <div className={`p-6 rounded-xl border backdrop-blur-sm ${
           isOverBudget 
             ? 'bg-gradient-to-br from-red-400/20 to-red-600/20 border-red-400/30' 
-            : 'bg-gradient-to-br from-blue-400/20 to-blue-600/20 border-blue-400/30'
+            : 'bg-gradient-to-br from-cyan-400/20 to-teal-500/20 border-cyan-400/30'
         }`}>
           <div className="flex items-center justify-between mb-4">
             <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-              isOverBudget ? 'bg-red-500/30' : 'bg-blue-500/30'
+              isOverBudget ? 'bg-red-500/30' : 'bg-cyan-500/30'
             }`}>
               <span className="text-lg">{isOverBudget ? '⚠️' : '💰'}</span>
             </div>
             <div className={`text-sm font-medium ${
-              isOverBudget ? 'text-red-300' : 'text-blue-300'
+              isOverBudget ? 'text-red-300' : 'text-cyan-300'
             }`}>
               {isOverBudget ? 'DEFICIT' : 'SURPLUS'}
             </div>
           </div>
           <h4 className={`text-sm font-semibold mb-1 ${
-            isOverBudget ? 'text-red-300' : 'text-blue-300'
+            isOverBudget ? 'text-red-300' : 'text-cyan-300'
           }`}>
             {isOverBudget ? 'Over Budget' : 'Remaining'}
           </h4>
@@ -89,7 +89,7 @@ const BudgetSummary = () => {
             ${Math.abs(remainingBudget).toLocaleString()}
           </p>
           <p className={`text-xs mt-1 ${
-            isOverBudget ? 'text-red-200' : 'text-blue-200'
+            isOverBudget ? 'text-red-200' : 'text-cyan-200'
           }`}>
             Available funds
           </p>
@@ -115,7 +115,7 @@ const BudgetSummary = () => {
       {Object.keys(expensesByCategory).length > 0 && (
         <div className="space-y-4">
           <div className="flex items-center space-x-3 mb-6">
-            <div className="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-lg flex items-center justify-center">
               <span className="text-sm">📊</span>
             </div>
             <h4 className="text-lg font-semibold text-white">Expense Breakdown</h4>
@@ -158,9 +158,9 @@ const BudgetSummary = () => {
       <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/10">
         <div className="flex items-center space-x-2">
           <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-          <span className="text-blue-200 text-sm">Last updated: {new Date().toLocaleDateString()}</span>
+          <span className="text-cyan-200 text-sm">Last updated: {new Date().toLocaleDateString()}</span>
         </div>
-        <div className="text-blue-200 text-sm">
+        <div className="text-cyan-200 text-sm">
           {income.length + expenses.length} transactions total
         </div>
       </div>

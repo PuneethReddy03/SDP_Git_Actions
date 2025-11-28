@@ -34,44 +34,35 @@ const DashboardOverview = ({ onQuickAction }) => {
       title: 'Total Balance',
       value: `$${balance.toLocaleString()}`,
       change: balance >= 0 ? '+' : '',
-      changeColor: balance >= 0 ? 'text-emerald-300' : 'text-rose-300',
+      changeColor: balance >= 0 ? 'text-cyan-300' : 'text-orange-300',
       icon: '💰',
-      gradient: 'from-emerald-400 to-teal-600',
-      bgGradient: 'from-emerald-500/20 to-teal-600/20'
+      gradient: 'from-cyan-400 to-teal-500',
+      bgGradient: 'from-cyan-500/20 to-teal-600/20'
     },
     {
       title: 'Total Income',
       value: `$${totalIncome.toLocaleString()}`,
       change: `${income.length} sources`,
-      changeColor: 'text-emerald-300',
+      changeColor: 'text-teal-300',
       icon: '📈',
-      gradient: 'from-green-400 to-emerald-600',
-      bgGradient: 'from-green-500/20 to-emerald-600/20'
+      gradient: 'from-teal-400 to-emerald-500',
+      bgGradient: 'from-teal-500/20 to-emerald-600/20'
     },
     {
       title: 'Total Expenses',
       value: `$${totalExpenses.toLocaleString()}`,
       change: `${expenses.length} transactions`,
-      changeColor: 'text-rose-300',
+      changeColor: 'text-orange-300',
       icon: '💸',
-      gradient: 'from-rose-400 to-pink-600',
-      bgGradient: 'from-rose-500/20 to-pink-600/20'
-    },
-    {
-      title: 'Savings Progress',
-      value: `${savingsProgress.toFixed(1)}%`,
-      change: `$${totalSavings.toLocaleString()} saved`,
-      changeColor: 'text-yellow-300',
-      icon: '🎯',
-      gradient: 'from-yellow-400 to-orange-600',
-      bgGradient: 'from-yellow-500/20 to-orange-600/20'
+      gradient: 'from-orange-400 to-amber-500',
+      bgGradient: 'from-orange-500/20 to-amber-600/20'
     }
   ];
 
   return (
     <div className="space-y-8">
       {/* Hero Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {quickStats.map((stat, index) => (
           <div
             key={stat.title}
@@ -95,86 +86,8 @@ const DashboardOverview = ({ onQuickAction }) => {
       </div>
 
       {/* Main Dashboard Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left Column - Quick Actions */}
-        <div className="space-y-6">
-          {/* Quick Actions Card */}
-          <div className="glass rounded-2xl p-6 shadow-2xl border border-white/20 animate-slideInLeft">
-            <h3 className="text-xl font-bold text-white mb-6 flex items-center space-x-2">
-              <span>⚡</span>
-              <span>Quick Actions</span>
-            </h3>
-            <div className="space-y-3">
-              <button 
-                onClick={() => onQuickAction('income')}
-                className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-3 px-4 rounded-xl hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 shadow-lg flex items-center space-x-3"
-              >
-                <span className="text-lg">💰</span>
-                <span className="font-semibold">Add Income</span>
-              </button>
-              <button 
-                onClick={() => onQuickAction('expenses')}
-                className="w-full bg-gradient-to-r from-rose-500 to-pink-600 text-white py-3 px-4 rounded-xl hover:from-rose-600 hover:to-pink-700 transition-all duration-300 shadow-lg flex items-center space-x-3"
-              >
-                <span className="text-lg">💸</span>
-                <span className="font-semibold">Add Expense</span>
-              </button>
-              <button 
-                onClick={() => onQuickAction('savings')}
-                className="w-full bg-gradient-to-r from-yellow-500 to-orange-600 text-white py-3 px-4 rounded-xl hover:from-yellow-600 hover:to-orange-700 transition-all duration-300 shadow-lg flex items-center space-x-3"
-              >
-                <span className="text-lg">🎯</span>
-                <span className="font-semibold">Set Goal</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Budget Health Card */}
-          <div className="glass rounded-2xl p-6 shadow-2xl border border-white/20 animate-slideInLeft" style={{ animationDelay: '200ms' }}>
-            <h3 className="text-xl font-bold text-white mb-6 flex items-center space-x-2">
-              <span>❤️</span>
-              <span>Budget Health</span>
-            </h3>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-white/80">Spending Ratio</span>
-                <span className="text-white font-bold">
-                  {totalIncome > 0 ? ((totalExpenses / totalIncome) * 100).toFixed(1) : 0}%
-                </span>
-              </div>
-              <div className="w-full bg-white/20 rounded-full h-3">
-                <div
-                  className={`h-3 rounded-full transition-all duration-500 ${
-                    totalIncome > 0 && (totalExpenses / totalIncome) > 0.8
-                      ? 'bg-gradient-to-r from-red-400 to-rose-500'
-                      : totalIncome > 0 && (totalExpenses / totalIncome) > 0.6
-                      ? 'bg-gradient-to-r from-yellow-400 to-orange-500'
-                      : 'bg-gradient-to-r from-green-400 to-emerald-500'
-                  }`}
-                  style={{ width: `${totalIncome > 0 ? Math.min((totalExpenses / totalIncome) * 100, 100) : 0}%` }}
-                ></div>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className={`w-3 h-3 rounded-full ${
-                  totalIncome > 0 && (totalExpenses / totalIncome) > 0.8
-                    ? 'bg-red-400'
-                    : totalIncome > 0 && (totalExpenses / totalIncome) > 0.6
-                    ? 'bg-yellow-400'
-                    : 'bg-green-400'
-                }`}></div>
-                <span className="text-white/80 text-sm">
-                  {totalIncome > 0 && (totalExpenses / totalIncome) > 0.8
-                    ? 'High spending - Consider reducing expenses'
-                    : totalIncome > 0 && (totalExpenses / totalIncome) > 0.6
-                    ? 'Moderate spending - Room for improvement'
-                    : 'Healthy spending - Great job!'}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Center Column - Recent Activity */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Left Column - Recent Activity */}
         <div className="glass rounded-2xl p-6 shadow-2xl border border-white/20 animate-slideInUp" style={{ animationDelay: '300ms' }}>
           <h3 className="text-xl font-bold text-white mb-6 flex items-center justify-between">
             <div className="flex items-center space-x-2">
@@ -201,8 +114,8 @@ const DashboardOverview = ({ onQuickAction }) => {
                   <div className="flex items-center space-x-3">
                     <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
                       transaction.type === 'income' 
-                        ? 'bg-gradient-to-br from-emerald-400 to-teal-600' 
-                        : 'bg-gradient-to-br from-rose-400 to-pink-600'
+                        ? 'bg-gradient-to-br from-teal-400 to-cyan-500' 
+                        : 'bg-gradient-to-br from-orange-400 to-amber-500'
                     }`}>
                       <span className="text-lg">{transaction.type === 'income' ? '💰' : '💸'}</span>
                     </div>
@@ -213,7 +126,7 @@ const DashboardOverview = ({ onQuickAction }) => {
                   </div>
                   <div className="text-right">
                     <p className={`font-bold ${
-                      transaction.type === 'income' ? 'text-emerald-300' : 'text-rose-300'
+                      transaction.type === 'income' ? 'text-cyan-300' : 'text-orange-300'
                     }`}>
                       {transaction.type === 'income' ? '+' : '-'}${transaction.amount.toLocaleString()}
                     </p>
@@ -225,62 +138,29 @@ const DashboardOverview = ({ onQuickAction }) => {
           )}
         </div>
 
-        {/* Right Column - Goals & Insights */}
-        <div className="space-y-6">
-          {/* Monthly Overview */}
-          <div className="glass rounded-2xl p-6 shadow-2xl border border-white/20 animate-slideInRight">
-            <h3 className="text-xl font-bold text-white mb-6 flex items-center space-x-2">
-              <span>📅</span>
-              <span>This Month</span>
-            </h3>
-            <div className="space-y-4">
+        {/* Right Column - Monthly Overview */}
+        <div className="glass rounded-2xl p-6 shadow-2xl border border-white/20 animate-slideInRight">
+          <h3 className="text-xl font-bold text-white mb-6 flex items-center space-x-2">
+            <span>📅</span>
+            <span>This Month</span>
+          </h3>
+          <div className="space-y-4">
+            <div className="flex justify-between items-center">
+              <span className="text-white/80">Income</span>
+              <span className="text-cyan-300 font-bold">+${totalIncome.toLocaleString()}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-white/80">Expenses</span>
+              <span className="text-orange-300 font-bold">-${totalExpenses.toLocaleString()}</span>
+            </div>
+            <div className="border-t border-white/20 pt-4">
               <div className="flex justify-between items-center">
-                <span className="text-white/80">Income</span>
-                <span className="text-emerald-300 font-bold">+${totalIncome.toLocaleString()}</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-white/80">Expenses</span>
-                <span className="text-rose-300 font-bold">-${totalExpenses.toLocaleString()}</span>
-              </div>
-              <div className="border-t border-white/20 pt-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-white font-semibold">Net</span>
-                  <span className={`font-bold text-lg ${balance >= 0 ? 'text-emerald-300' : 'text-rose-300'}`}>
-                    {balance >= 0 ? '+' : ''}${balance.toLocaleString()}
-                  </span>
-                </div>
+                <span className="text-white font-semibold">Net</span>
+                <span className={`font-bold text-lg ${balance >= 0 ? 'text-cyan-300' : 'text-orange-300'}`}>
+                  {balance >= 0 ? '+' : ''}${balance.toLocaleString()}
+                </span>
               </div>
             </div>
-          </div>
-
-          {/* Savings Overview */}
-          <div className="glass rounded-2xl p-6 shadow-2xl border border-white/20 animate-slideInRight" style={{ animationDelay: '200ms' }}>
-            <h3 className="text-xl font-bold text-white mb-6 flex items-center space-x-2">
-              <span>🎯</span>
-              <span>Savings Goals</span>
-            </h3>
-            {savingsGoals.length === 0 ? (
-              <div className="text-center py-4">
-                <p className="text-white/60 text-sm">No savings goals set</p>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-white/80">Progress</span>
-                  <span className="text-yellow-300 font-bold">{savingsProgress.toFixed(1)}%</span>
-                </div>
-                <div className="w-full bg-white/20 rounded-full h-3">
-                  <div
-                    className="h-3 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 transition-all duration-500"
-                    style={{ width: `${Math.min(savingsProgress, 100)}%` }}
-                  ></div>
-                </div>
-                <div className="text-center">
-                  <p className="text-white font-semibold">${totalSavings.toLocaleString()}</p>
-                  <p className="text-white/60 text-sm">of ${totalSavingsTarget.toLocaleString()} target</p>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>
@@ -314,12 +194,12 @@ const Dashboard = () => {
           {/* Sidebar Header */}
           <div className="p-6 border-b border-white/10">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-xl flex items-center justify-center shadow-lg">
                 <span className="text-xl">💰</span>
               </div>
               <div>
                 <h1 className="text-lg font-bold text-white">Budget Planner</h1>
-                <p className="text-blue-200 text-xs">Smart financial management</p>
+                <p className="text-cyan-200 text-xs">Smart financial management</p>
               </div>
             </div>
           </div>
@@ -332,7 +212,7 @@ const Dashboard = () => {
               </div>
               <div>
                 <p className="text-white font-medium text-sm">Hi, {user?.username}</p>
-                <p className="text-blue-200 text-xs">Welcome back!</p>
+                <p className="text-cyan-200 text-xs">Welcome back!</p>
               </div>
             </div>
           </div>
@@ -347,7 +227,7 @@ const Dashboard = () => {
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm transition-all duration-300 ${
                     activeTab === tab.id
                       ? 'bg-white/20 text-white shadow-lg backdrop-blur-sm border border-white/30'
-                      : 'text-blue-200 hover:text-white hover:bg-white/10'
+                      : 'text-cyan-200 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   <span className="text-lg">{tab.icon}</span>
@@ -376,7 +256,7 @@ const Dashboard = () => {
             <div className="flex justify-between items-center">
               <div>
                 <h2 className="text-2xl font-bold text-white capitalize">{activeTab}</h2>
-                <p className="text-blue-200 text-sm">
+                <p className="text-cyan-200 text-sm">
                   {activeTab === 'dashboard' && 'Overview of your financial status'}
                   {activeTab === 'income' && 'Manage your income sources'}
                   {activeTab === 'expenses' && 'Track your spending'}
@@ -399,9 +279,9 @@ const Dashboard = () => {
           {/* Main Content with Animated Background */}
           <main className="flex-1 p-6 relative overflow-auto">
             <div className="absolute inset-0 opacity-20 pointer-events-none">
-              <div className="absolute top-20 left-10 w-20 h-20 bg-white rounded-full blur-3xl animate-pulse"></div>
-              <div className="absolute top-40 right-20 w-32 h-32 bg-blue-300 rounded-full blur-3xl animate-pulse delay-1000"></div>
-              <div className="absolute bottom-20 left-1/2 w-24 h-24 bg-purple-300 rounded-full blur-3xl animate-pulse delay-2000"></div>
+              <div className="absolute top-20 left-10 w-20 h-20 bg-cyan-300 rounded-full blur-3xl animate-pulse"></div>
+              <div className="absolute top-40 right-20 w-32 h-32 bg-teal-300 rounded-full blur-3xl animate-pulse delay-1000"></div>
+              <div className="absolute bottom-20 left-1/2 w-24 h-24 bg-orange-300 rounded-full blur-3xl animate-pulse delay-2000"></div>
             </div>
             
             <div className="relative z-10 max-w-7xl mx-auto">
